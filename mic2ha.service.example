@@ -1,0 +1,14 @@
+[Unit]
+Description=Reports state of capture devices to Home Assistant
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+Environment=WEBHOOK_URL=https://ha.example.com/api/webhook/some_id
+Environment=ENTITY_ID=input_boolean.some_name
+Environment=SSID=
+ExecStart=/path/to/mic2ha/mic2ha.py
+
+[Install]
+WantedBy=multi-user.target
